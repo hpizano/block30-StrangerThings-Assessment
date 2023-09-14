@@ -1,7 +1,9 @@
 const AboutUs = ()=> {
   return (
     <div>
-      TODO: Add some information about Us!
+      <h1>Hello, welcome to our Stranger Things site!</h1>
+      <h2> Here you can list anything for sale, just check out the show for inspiration ...</h2>
+      <a href='https://www.netflix.com/title/80057281' target="_blank"> Watch Stranger Things Today! </a>
     </div>
   );
 };

@@ -21,7 +21,7 @@
 
 # Tasks
 
-- [] A user should see some content on the about us page.
+- [x] A user should see some content on the about us page.
 - [] A user should be able to navigate to a contact us page.
 - [] The login/register button should be disabled if a username or password is not provided.
 - [] A user should see the author of the post next to the post listing.
