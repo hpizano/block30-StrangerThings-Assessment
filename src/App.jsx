@@ -57,6 +57,7 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
+   
 
   return (
     <>
@@ -65,7 +66,7 @@ function App() {
         auth.username ? (
           <div>
             <h1>
-              Welcome { auth.username }({ })
+              Welcome { auth.username } - your current number of posts:()
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link to='/posts/create'> Create A Post </Link>
