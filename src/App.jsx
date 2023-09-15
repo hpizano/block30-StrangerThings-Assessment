@@ -65,7 +65,7 @@ function App() {
         auth.username ? (
           <div>
             <h1>
-              Welcome { auth.username }
+              Welcome { auth.username }({ })
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link to='/posts/create'> Create A Post </Link>
