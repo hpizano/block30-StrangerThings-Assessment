@@ -12,6 +12,7 @@ import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 function App() {
   const [auth, setAuth] = useState({});
   const [posts, setPosts] = useState([]);
+  const [myPost, setmyPost] = useState([]);
 
   const navigate = useNavigate();
 
@@ -57,12 +58,21 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
-  const destroyPost = async(post) => {
-    await api.removePost(post)
-    setPosts(posts.filter( _post => _post._id !== post._id)) ;
+  const removePost = async(post) => {
+    await api.removePost(post);
+    setPosts(posts.filter( _post => _post._id !== posts._id)) ;
     navigate('/') ;
   }
-   
+  
+  // const myPosts = async () => {
+  //   try {
+  //     const response = await api.myPosts , {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${TOKEN_ST
+      
+  //   }
+  // }
 
   return (
     <>
@@ -74,9 +84,9 @@ function App() {
               Welcome { auth.username } - your current number of posts:({posts.length})
               <button onClick={ logout }>Logout</button>
             </h1>
-            <Link to='/posts/create'> Create A Post </Link>
-            <Link to='/about_us'> About Us </Link>
-            <Link to='/contact_us'> Contact Us </Link>
+            <Link className= 'nav' to='/posts/create'> Create A Post </Link>
+            <Link className= 'nav' to='/about_us'> About Us </Link>
+            <Link className= 'nav' to='/contact_us'> Contact Us </Link>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
@@ -91,7 +101,7 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post destroyPost={destroyPost} posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post removePost={removePost} posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element= {<ContactUs />} />
       </Routes>

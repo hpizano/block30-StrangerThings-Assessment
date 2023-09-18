@@ -56,7 +56,7 @@ const createPost = async(post)=> {
 };
 
 const removePost = async (post) => {
-  const response = await axios.delete(
+  await axios.delete(
     `${BASE_URL}/posts/`,
     { post },
     {
@@ -65,7 +65,6 @@ const removePost = async (post) => {
       }
     }
   );
-  return response.data.data.post;
 };
 
 const login = async(credentials)=> {
