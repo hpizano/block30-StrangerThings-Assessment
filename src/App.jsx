@@ -81,7 +81,7 @@ function App() {
         auth.username ? (
           <div>
             <h1>
-              Welcome { auth.username } - your current number of posts:({posts.length})
+              Welcome { auth.username } - your current number of posts:()
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link className= 'nav' to='/posts/create'> Create A Post </Link>
