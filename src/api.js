@@ -55,6 +55,19 @@ const createPost = async(post)=> {
   return response.data.data.post;
 };
 
+const removePost = async (post) => {
+  const response = await axios.delete(
+    `${BASE_URL}/posts/`,
+    { post },
+    {
+      header: {
+        authorization: `Bearer ${ window.localStorage.getItem('token') }`
+      }
+    }
+  );
+  return response.data.data.post;
+};
+
 const login = async(credentials)=> {
   const response = await axios.post(
     `${BASE_URL}/users/login`,
@@ -71,8 +84,8 @@ const api = {
   login,
   loginWithToken,
   fetchPosts,
-  createPost
-
+  createPost,
+  removePost
 };
 
 export default api;

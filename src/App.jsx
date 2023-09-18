@@ -57,6 +57,11 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
+  const destroyPost = async(post) => {
+    await api.removePost(post)
+    setPosts(posts.filter( _post => _post._id !== post._id)) ;
+    navigate('/') ;
+  }
    
 
   return (
@@ -66,7 +71,7 @@ function App() {
         auth.username ? (
           <div>
             <h1>
-              Welcome { auth.username } - your current number of posts:()
+              Welcome { auth.username } - your current number of posts:({posts.length})
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link to='/posts/create'> Create A Post </Link>
@@ -86,7 +91,7 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post destroyPost={destroyPost} posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element= {<ContactUs />} />
       </Routes>
